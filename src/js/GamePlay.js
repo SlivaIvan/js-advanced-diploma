@@ -1,3 +1,5 @@
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable no-alert */
 import { calcHealthLevel, calcTileType } from './utils';
 
 export default class GamePlay {
@@ -15,7 +17,6 @@ export default class GamePlay {
   }
 
   bindToDOM(container) {
-    console.log(container);
     if (!(container instanceof HTMLElement)) {
       throw new Error('container is not HTMLElement');
     }

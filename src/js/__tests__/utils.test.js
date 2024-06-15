@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { calcTileType } from '../utils';
 
 describe(calcTileType, () => {

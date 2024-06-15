@@ -12,8 +12,9 @@
  * ```
  * */
 export default class Team {
-  constructor(character) {
-    this.character = character;
+  constructor(characters) {
+    this.characters = characters;
   }
+
   // TODO: write your logic here
 }
