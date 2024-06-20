@@ -1,22 +1,27 @@
-version: 1.0.{build}
-image: Visual Studio 2019
+environment:
+  nodejs_version: "20"
+
+branches:
+  only:
+    - master  # ветка git
+    - main
+
+cache: node_modules  # кеширование
 
 install:
-  - ps: Install-Product node 14
-  - cmd: npm install -g npm
+  - yarn  # команда установки зависимостей
 
-before_build:
-  - cmd: if not exist "C:\Users\appveyor\AppData\Roaming\npm" mkdir "C:\Users\appveyor\AppData\Roaming\npm"
-  - ps: |
-      if (!(Test-Path -Path "C:\Users\appveyor\AppData\Roaming\npm")) {
-          New-Item -ItemType Directory -Path "C:\Users\appveyor\AppData\Roaming\npm"
-      }
+build: off  # отключаем встроенную в appveyor систему сборки
 
 build_script:
-  - cmd: npm install
-  - cmd: npm run build
-  - cmd: npm run lint
-  - cmd: npm test
+  - yarn build   # команда сборки
 
-after_test:
-  - cmd: npx push-dir --dir=dist --branch=gh-pages --force --verbose
+test_script:
+  - yarn lint && npm test  # скрипт тестирования
+
+deploy_script:  # скрипт развёртывания
+  - git config --global credential.helper store
+  - git config --global user.name AppVeyor
+  - git config --global user.email ci@appveyor.com
+  - echo "https://${AppVeyor}:x-oauth-basic@github.com" > "$HOME/.git-credentials"
+  - npx push-dir --dir=dist --branch=gh-pages --force --verbose
