@@ -9,3 +9,4 @@ export default class Swordsman extends Character {
     this.distanceAttack = 1;
   }
 }
+
