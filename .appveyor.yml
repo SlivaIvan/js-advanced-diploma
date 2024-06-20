@@ -17,7 +17,7 @@ build_script:
   - npm run build   # команда сборки
 
 test_script:
-  - npm lint && npm test  # скрипт тестирования
+  - npm run lint && npm test  # скрипт тестирования
 
 deploy_script:  # скрипт развёртывания
   - git config --global credential.helper store
@@ -25,4 +25,3 @@ deploy_script:  # скрипт развёртывания
   - git config --global user.email ci@appveyor.com
   - echo "https://${dip}:x-oauth-basic@github.com" > "$HOME/.git-credentials"
   - npx push-dir --dir=dist --branch=gh-pages --force --verbose
-  
