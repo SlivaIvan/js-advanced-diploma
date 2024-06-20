@@ -17,12 +17,12 @@ import { possibleMoveIndexes, possibleAttackIndexes } from './utils';
 
 import PositionedCharacter from './PositionedCharacter';
 
-import Bowman from './characters/bowman';
-import Daemon from './characters/daemon';
-import Magician from './characters/magician';
-import Swordsman from './characters/swordsman';
-import Undead from './characters/undead';
-import Vampire from './characters/vampire';
+import Bowman from './characters/Bowman';
+import Daemon from './characters/Daemon';
+import Magician from './characters/Magician';
+import Swordsman from './characters/Swordsman';
+import Undead from './characters/Undead';
+import Vampire from './characters/Vampire';
 
 export default class GameController {
   constructor(gamePlay, stateService) {
